@@ -1,0 +1,19 @@
+.login-text{
+    color: rgb(250, 117, 117);
+    text-decoration: none;
+}
+.btn1{
+    border:none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(236, 135, 135);
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.btn1:hover{
+    background-color: white;
+    border:1px solid;
+    color: rgb(252, 146, 146);
+}

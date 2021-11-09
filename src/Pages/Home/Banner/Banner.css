@@ -11,8 +11,7 @@
     margin-left: 40%;
     width: 520px;
     top: 70px;
-    bottom: 70px;
-    padding: 19% 50px 5% 50px;
+    padding:  50px;
     background-color: rgba(140,15,39,.9);
 }
 
@@ -28,11 +27,11 @@
 
 .des-left{
     left: center;
-    right: 70px;
+    right: 50px;
     bottom: 90px;
+    width: auto;
     text-align: right;
-    width: 100%;
-    margin-left: 60%;
+    margin-left: 55%;
     text-align:left;
     text-transform: uppercase;
   

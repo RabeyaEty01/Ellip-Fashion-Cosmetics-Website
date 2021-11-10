@@ -1,0 +1,27 @@
+.review-card-img{
+    width: 30%;
+    height: 50%;
+    margin-top: -15%;
+    margin-left: -2%;
+}
+.fa-star{
+    color: orange;
+}
+.slick-next:before, .slick-prev:before{
+    font-size: 25px;
+    color:rgb(252, 146, 146);
+   
+}
+.slick-dots li button:before{
+    font-size: 20px;
+    color:rgb(15, 14, 14);;
+}
+
+.small-text{
+        font-size: 24px;
+        margin-bottom: 0;
+        color:#ac192c;
+        font-weight: 400;
+        font-family: 'Caveat';
+}
+

@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link ,useRouteMatch, Switch,Route} from 'react-router-dom';
+import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import useAuth from '../../../Hooks/useAuth';
 import AddReview from '../AddReview/AddReview';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import AddProduct from './../AddProduct/AddProduct';
 import './Dashboard.css';
 
 const Dashboard = () => {
+    const { logOut } = useAuth();
+
     let { path, url } = useRouteMatch();  //for nesting route
+
     return (
         <>
             <div class="container-fluid">
@@ -22,7 +26,7 @@ const Dashboard = () => {
                             <div class="collapse navbar-collapse order-last" id="nav">
                                 <ul class="navbar-nav flex-column w-100 justify-content-center">
                                     <li class="nav-item ">
-                                        <Link as={HashLink}  to={`${url}`} class="nav-link active nav-item-hover mt-5  fw-bold d-flex">
+                                        <Link as={HashLink} to={`${url}`} class="nav-link active nav-item-hover mt-5  fw-bold d-flex">
                                             <span className="icon">
                                                 <i class="fas fa-user-shield"></i>
                                             </span>
@@ -106,7 +110,7 @@ const Dashboard = () => {
                                             <span className="icon">
                                                 <i className="fa fa-sign-out"></i>
                                             </span>
-                                            <span className="title"><h5 className="ms-3">Logout</h5></span>
+                                            <span onClick={logOut} className="title"><h5 className="ms-3">Logout</h5></span>
                                         </Link>
                                     </li>
 

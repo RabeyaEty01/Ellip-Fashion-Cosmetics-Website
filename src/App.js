@@ -6,6 +6,8 @@ import Explore from './Pages/Explore/Explore/Explore';
 import Login from './Pages/Login/Login/Login';
 import Registration from './Pages/Registration/Registration';
 import AuthProvider from './context/AuthProvider/AuthProvider';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 
 
@@ -30,6 +32,9 @@ function App() {
             <Route path="/register">
               <Registration></Registration>
             </Route>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
           </Switch>
         </BrowserRouter>
       </AuthProvider>

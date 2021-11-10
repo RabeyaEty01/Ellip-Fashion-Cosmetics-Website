@@ -1,0 +1,11 @@
+.nav-background{
+    background-color:rgb(236, 135, 135);
+}
+.title, .icon{
+    color: white;
+}
+
+.title:hover{
+    color:rgb(13, 20, 22);
+    font-weight: bold;
+}

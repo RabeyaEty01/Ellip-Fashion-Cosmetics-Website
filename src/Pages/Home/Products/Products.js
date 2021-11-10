@@ -5,7 +5,6 @@ import brand from '../../../images/brand.png';
 import doller from '../../../images/doller.png';
 import info from '../../../images/info.png';
 import stock from '../../../images/stock.png';
-import starImg from '../../../images/star.png';
 import './Products.css';
 
 const Products = () => {
@@ -22,8 +21,7 @@ const Products = () => {
             <h5 className="small-text mt-5">Our colors matching your moods..</h5>
             <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">___Our</small> <small>Popular </small> <small className="fw-bold login-text ">Products___</small>
             </h2>
-            <img src={starImg} alt="" />
-
+           
             {products.length === 0 ?
 
                 <Spinner animation="border" role="status">
@@ -42,8 +40,8 @@ const Products = () => {
                                     </div>
 
                                     <div className="my-3">
-                                        <h5 className="card-title fw-bold ">{product?.name}</h5>
-                                        <h4 class="card-text fw-bold "><img src={doller} width="20px" alt="" /> {product?.price}</h4>
+                                        <h4 className="card-title ">{product?.name}</h4>
+                                        <h5 class="card-text  "><img src={doller} width="20px" alt="" /> {product?.price}</h5>
                                         <div className="d-flex justify-content-around">
                                         </div>
                                         <p class="card-text  text-secondary"><img src={info} width="25px" alt="" /> {product?.description.slice(0, 110)}</p>

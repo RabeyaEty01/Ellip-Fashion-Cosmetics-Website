@@ -20,7 +20,8 @@ const Explore = () => {
         <>
             <Header></Header>
             <div className="container">
-                <h2 className="animate__animated animate__bounceInLeft text-center my-5"><small className="fw-bold login-text ">___Our</small> <small> All </small> <small className="fw-bold login-text ">Products___</small>
+                <h5 className="small-text mt-5">Our colors matching your moods..</h5>
+                <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">___Our</small> <small> All </small> <small className="fw-bold login-text ">Available</small><small> Products___ </small>
                 </h2>
 
 

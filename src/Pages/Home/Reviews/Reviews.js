@@ -88,10 +88,10 @@ const Reviews = () => {
 
                                             }
                                             <div class="card-body">
-                                                <h5 class="card-title text-start">{review?.name}</h5>
-                                                <p class="card-text text-secondary text-start">{review?.email}</p>
-                                                <p class="card-text text-secondary text-start">{review?.feedback}</p>
-                                                <p className="card-text text-start"><Rating
+                                                <h5 class="card-title ">{review?.name}</h5>
+                                                <p class="card-text text-secondary ">{review?.email}</p>
+                                                <p class="card-text text-secondary p-3">{review?.feedback}</p>
+                                                <p className="card-text p-3"><Rating
                                                     initialRating={review.ratting}
                                                     emptySymbol="far fa-star icon-color"
                                                     fullSymbol="fas fa-star icon-color"

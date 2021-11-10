@@ -8,6 +8,7 @@ import Registration from './Pages/Registration/Registration';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 //import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 
 
@@ -33,9 +34,9 @@ function App() {
             <Route path="/register">
               <Registration></Registration>
             </Route>
-            {/* <Route path="/addProduct">
-              <AddProduct></AddProduct>
-            </Route> */}
+            <PrivateRoute exact path="/products/booking/:id">
+              <PlaceOrder></PlaceOrder>
+            </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>

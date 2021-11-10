@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import logo from '../../../images/logo.png';
 import './AddProduct.css';
 
 const AddProduct = () => {
@@ -21,29 +20,30 @@ const AddProduct = () => {
 
     return (
         <div className="container col-lg-8 col-sm-12">
-            <img src={logo} alt="" />
-        <div>
-            <h1 className="my-3 login-text ">Add New Product</h1>
-            <form className="add-form " onSubmit={handleSubmit(onSubmit)}>
+            <div>
+                <h5 className="small-text mt-5">New Products Page</h5>
+                <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">Add</small> <small>A</small> <small className="fw-bold login-text ">New</small><small>Product</small>
+                </h2>
+                <form className="add-form mt-5" onSubmit={handleSubmit(onSubmit)}>
 
-                <input required className="rounded p-2 m-2 " placeholder="Name" {...register("name")} />
+                    <input required className="rounded p-2 m-2 " placeholder="Name" {...register("name")} />
 
-                <input required className="rounded p-2 m-2" placeholder="Price" type="number"{...register("price", { required: true })} />
+                    <input required className="rounded p-2 m-2" placeholder="Price" type="number"{...register("price", { required: true })} />
 
-                <input required className="rounded p-2 m-2 " placeholder="Brand" {...register("brand")} />
+                    <input required className="rounded p-2 m-2 " placeholder="Brand" {...register("brand")} />
 
-                <input required className="rounded p-2 m-2 " placeholder="Available Stock" {...register("stock")} />
+                    <input required className="rounded p-2 m-2 " placeholder="Available Stock" {...register("stock")} />
 
-                <textarea required className="rounded p-2 m-2" placeholder="Description" {...register("description")} />
+                    <textarea required className="rounded p-2 m-2" placeholder="Description" {...register("description")} />
 
-                <input required className="rounded p-2 m-2" placeholder="Image Url" {...register("img")} />
+                    <input required className="rounded p-2 m-2" placeholder="Image Url" {...register("img")} />
 
-                {errors.exampleRequired && <span>This field is required</span>}
+                    {errors.exampleRequired && <span>This field is required</span>}
 
-                <input className="btn btn1 mt-3 mb-5" type="submit" />
-            </form>
+                    <input className="btn btn1 mt-3 mb-5" type="submit" />
+                </form>
+            </div>
         </div>
-    </div>
     );
 };
 

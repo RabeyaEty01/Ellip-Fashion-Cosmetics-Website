@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../../../images/logo.png';
 import { useForm } from 'react-hook-form';
 import './AddReview.css';
 import axios from 'axios';
@@ -25,9 +24,11 @@ const AddReview = () => {
 
     return (
         <>
-            <img src={logo} alt="" />
-
-            <h2 className="mt-5 login-text">FEED BACK FORM</h2>
+           
+            <h5 className="small-text mt-3">Client's Feedback Form</h5>
+            <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">Please </small> <small>Add</small> <small className="fw-bold login-text ">A</small><small> Review</small>
+            </h2>
+        
             <div className="container col-lg-8 col-sm-12 mt-5">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div class="row my-3">

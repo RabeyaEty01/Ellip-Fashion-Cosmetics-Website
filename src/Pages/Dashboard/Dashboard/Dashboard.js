@@ -4,7 +4,9 @@ import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../Hooks/useAuth';
 import AddReview from '../AddReview/AddReview';
 import DashboardHome from '../DashboardHome/DashboardHome';
+import Pay from '../Pay/Pay';
 import AddProduct from './../AddProduct/AddProduct';
+import logo from '../../../images/logo.png';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -26,6 +28,11 @@ const Dashboard = () => {
                             <div class="collapse navbar-collapse order-last" id="nav">
                                 <ul class="navbar-nav flex-column w-100 justify-content-center">
                                     <li class="nav-item ">
+                                        <Link as={HashLink} to="#" class="nav-link active nav-item-hover mt-3  fw-bold d-flex">
+                                        <img  src={logo} alt="" />
+                                        </Link>
+                                    </li>
+                                    <li class="nav-item ">
                                         <Link as={HashLink} to={`${url}`} class="nav-link active nav-item-hover mt-5  fw-bold d-flex">
                                             <span className="icon">
                                                 <i class="fas fa-user-shield"></i>
@@ -43,7 +50,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li class="nav-item">
-                                        <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
+                                        <Link as={HashLink} to={`${url}/pay`} class="nav-link  mt-3 d-flex ">
                                             <span className="icon">
                                                 <i className="fa fa-shopping-cart"></i>
                                             </span>
@@ -128,6 +135,10 @@ const Dashboard = () => {
                                 </Route>
                                 <Route path={`${path}/addProduct`}>
                                     <AddProduct></AddProduct>
+                                </Route>
+                                <Route path={`${path}/pay`}>
+                                    
+                                    <Pay></Pay>
                                 </Route>
                                 <Route path={`${path}/addReview`}>
                                     <AddReview></AddReview>

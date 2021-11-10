@@ -19,7 +19,7 @@ const Products = () => {
     return (
         <div className="container">
 
-            <h2 className="animate__animated animate__bounceInLeft text-center my-5"><small className="fw-bold ">___Our</small> <small className="text-secondary">Popular </small> <small className="fw-bold">Products___</small>
+            <h2 className="animate__animated animate__bounceInLeft text-center my-5"><small className="fw-bold login-text ">___Our</small> <small>Popular </small> <small className="fw-bold login-text ">Products___</small>
             </h2>
 
 
@@ -29,7 +29,7 @@ const Products = () => {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
                 :
-                <div class="row row-cols-1 row-cols-md-3 g-4 my-5">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-5">
                     {
                         products.map((product, index) =>
                             <div class="col">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link ,useRouteMatch, Switch,Route} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import AddReview from '../AddReview/AddReview';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import AddProduct from './../AddProduct/AddProduct';
 import './Dashboard.css';
@@ -54,7 +55,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li class="nav-item">
-                                        <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
+                                        <Link as={HashLink} to={`${url}/addReview`} class="nav-link  mt-3 d-flex ">
                                             <span className="icon">
                                                 <i className="fa fa-shopping-cart"></i>
                                             </span>
@@ -123,6 +124,9 @@ const Dashboard = () => {
                                 </Route>
                                 <Route path={`${path}/addProduct`}>
                                     <AddProduct></AddProduct>
+                                </Route>
+                                <Route path={`${path}/addReview`}>
+                                    <AddReview></AddReview>
                                 </Route>
                                 {/* <AdminRoute path={`${path}/addDoctor`}>
                                     <AddDoctor></AddDoctor>

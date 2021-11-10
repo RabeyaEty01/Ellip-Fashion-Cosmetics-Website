@@ -8,6 +8,7 @@ import Pay from '../Pay/Pay';
 import AddProduct from './../AddProduct/AddProduct';
 import logo from '../../../images/logo.png';
 import './Dashboard.css';
+import MyOrders from '../MyOrders/MyOrders';
 
 const Dashboard = () => {
     const { logOut } = useAuth();
@@ -58,7 +59,7 @@ const Dashboard = () => {
                                         </Link>
                                     </li>
                                     <li class="nav-item">
-                                        <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
+                                        <Link as={HashLink} to={`${url}/myOrders`} class="nav-link  mt-3 d-flex ">
                                             <span className="icon">
                                                 <i className="fa fa-shopping-cart"></i>
                                             </span>
@@ -142,6 +143,9 @@ const Dashboard = () => {
                                 </Route>
                                 <Route path={`${path}/addReview`}>
                                     <AddReview></AddReview>
+                                </Route>
+                                <Route path={`${path}/myOrders`}>
+                                    <MyOrders></MyOrders>
                                 </Route>
                                 {/* <AdminRoute path={`${path}/addDoctor`}>
                                     <AddDoctor></AddDoctor>

@@ -1,20 +1,28 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
 import './AddProduct.css';
 
 const AddProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
+    
     const onSubmit = data => {
         console.log(data);
 
         axios.post('http://localhost:5000/addProducts', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Product Added Successfully');
+                    swal({
+                        title: "Good job!",
+                        text: "Product Added Successfully!",
+                        icon: "success",
+                        button: "Aww yiss!",
+                    });
+
                     reset();
                 }
+
             })
     };
 
@@ -24,6 +32,15 @@ const AddProduct = () => {
                 <h5 className="small-text mt-5">New Products Page</h5>
                 <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">Add</small> <small>A</small> <small className="fw-bold login-text ">New</small><small>Product</small>
                 </h2>
+
+                {/* {
+                    success &&
+                   
+
+                   
+                } */}
+
+
                 <form className="add-form mt-5" onSubmit={handleSubmit(onSubmit)}>
 
                     <input required className="rounded p-2 m-2 " placeholder="Name" {...register("name")} />

@@ -9,6 +9,7 @@ import AddProduct from './../AddProduct/AddProduct';
 import logo from '../../../images/logo.png';
 import './Dashboard.css';
 import MyOrders from '../MyOrders/MyOrders';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 const Dashboard = () => {
     const { logOut } = useAuth();
@@ -96,7 +97,7 @@ const Dashboard = () => {
                                     </li>
 
                                     <li class="nav-item">
-                                        <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
+                                        <Link as={HashLink} to={`${url}/makeAdmin`} class="nav-link  mt-3 d-flex ">
                                             <span className="icon">
                                                 <i class="fas fa-user-shield"></i>
                                             </span>
@@ -143,6 +144,9 @@ const Dashboard = () => {
                                 </Route>
                                 <Route path={`${path}/addReview`}>
                                     <AddReview></AddReview>
+                                </Route>
+                                <Route path={`${path}/makeAdmin`}>
+                                    <MakeAdmin></MakeAdmin>
                                 </Route>
                                 <Route path={`${path}/myOrders`}>
                                     <MyOrders></MyOrders>

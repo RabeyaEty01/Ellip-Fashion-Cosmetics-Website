@@ -53,7 +53,7 @@ const Reviews = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://warm-river-62334.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);

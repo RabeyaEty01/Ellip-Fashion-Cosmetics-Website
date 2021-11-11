@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://warm-river-62334.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data));
     }, []);
@@ -22,7 +22,7 @@ const ManageOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/orders/${id}`;
+                    const url = `https://warm-river-62334.herokuapp.com/orders/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })
@@ -47,7 +47,7 @@ const ManageOrders = () => {
 
     //UPDATE STATUS
     const handleUpdateStatus = (id) => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://warm-river-62334.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

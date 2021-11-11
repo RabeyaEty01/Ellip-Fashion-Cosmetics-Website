@@ -9,6 +9,7 @@ import AuthProvider from './context/AuthProvider/AuthProvider';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
+import NotFound from './Pages/NotFound/NotFound';
 //import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 
 
@@ -40,6 +41,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
+            <Route exact path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
         </BrowserRouter>
       </AuthProvider>

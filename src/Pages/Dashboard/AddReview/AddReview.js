@@ -13,7 +13,7 @@ const AddReview = () => {
         console.log(data);
         data.clientDetails = user?.photoURL;
 
-        axios.post('http://localhost:5000/addReview', data)
+        axios.post('https://warm-river-62334.herokuapp.com/addReview', data)
             .then(res => {
                 if (res.data.insertedId) {
                     swal({

@@ -9,7 +9,7 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders/${email}`)
+        fetch(`https://warm-river-62334.herokuapp.com/myOrders/${email}`)
             .then(res => res.json())
             .then(data => setMyOrders(data))
     }, []);
@@ -27,7 +27,7 @@ const MyOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/orders/${id}`;
+                    const url = `https://warm-river-62334.herokuapp.com/orders/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

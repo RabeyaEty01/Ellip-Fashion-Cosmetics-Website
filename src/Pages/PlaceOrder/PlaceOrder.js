@@ -20,7 +20,7 @@ const PlaceOrder = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://warm-river-62334.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setproducts(data))
     }, [])
@@ -30,7 +30,7 @@ const PlaceOrder = () => {
         data.status = "Pending";
         data.productsDetails = products;
 
-        axios.post('http://localhost:5000/placeOrder', data)
+        axios.post('https://warm-river-62334.herokuapp.com/placeOrder', data)
             .then(res => {
                 if (res.data.insertedId) {
                     swal({

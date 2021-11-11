@@ -12,8 +12,18 @@
     border-radius: 4px;
     font-weight: bold;
 }
-.btn1:hover{
+
+.btn1:hover, .btn2:hover{
     background-color: white;
     border:1px solid;
     color: rgb(252, 146, 146);
+}
+.btn2{
+    border:none;
+    outline: none;
+    height: 50px;
+    background-color: rgb(236, 135, 135);
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import './AddProduct.css';
@@ -14,12 +14,11 @@ const AddProduct = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     swal({
-                        title: "Good job!",
+                        title: "WOW!",
                         text: "Product Added Successfully!",
                         icon: "success",
-                        button: "Aww yiss!",
+                        button: "Ok!",
                     });
-
                     reset();
                 }
 

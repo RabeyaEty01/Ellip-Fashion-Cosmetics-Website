@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import './AddReview.css';
 import axios from 'axios';
 import useAuth from '../../../Hooks/useAuth';
+import swal from 'sweetalert';
 
 const AddReview = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -11,11 +12,16 @@ const AddReview = () => {
     const onSubmit = data => {
         console.log(data);
         data.clientDetails = user?.photoURL;
-        
+
         axios.post('http://localhost:5000/addReview', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Feedback Added Successfully');
+                    swal({
+                        title: "WOW!",
+                        text: "Your Feedback Added Successfully!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
                     reset();
                 }
             })
@@ -24,11 +30,11 @@ const AddReview = () => {
 
     return (
         <>
-           
+
             <h5 className="small-text mt-3">Client's Feedback Form</h5>
             <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">Please </small> <small>Add</small> <small className="fw-bold login-text ">A</small><small> Review</small>
             </h2>
-        
+
             <div className="container col-lg-8 col-sm-12 mt-5">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div class="row my-3">

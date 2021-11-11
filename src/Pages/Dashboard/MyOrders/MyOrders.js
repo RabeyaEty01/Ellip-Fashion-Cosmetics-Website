@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
+import swal from 'sweetalert';
 
 const MyOrders = () => {
     const { user } = useAuth();
@@ -17,22 +18,38 @@ const MyOrders = () => {
 
     //DELETE Booked Order
     const handleDeleteBookedOrder = id => {
-        const proceed = window.confirm('Are you sure , you want to delete?');
-        if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Deleted successfully');
+        swal({
+            title: "Are you sure?",
+            text: "You Want To Cancel Your Order!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `http://localhost:5000/orders/${id}`;
+                    fetch(url, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
 
-                        const remainingOrders = myOrders.filter(order => order._id !== id);
-                        setMyOrders(remainingOrders);
-                    }
-                })
-        }
+                                swal("Upps! Your Order Has Been Canceled Successfully!", {
+                                    icon: "success",
+                                });
+                            }
+                            const remainingOrders = myOrders.filter(order => order._id !== id);
+                            setMyOrders(remainingOrders);
+                        })
+
+                }
+                else {
+                    swal("Your Order Not Canceled!");
+                }
+            });
+
+
     }
     return (
         <div className="main-section mt-0">

@@ -10,7 +10,7 @@ import doller from '../../images/doller.png';
 import info from '../../images/info.png';
 import stock from '../../images/stock.png';
 import Header from '../Shared/Header/Header';
-
+import swal from 'sweetalert';
 
 const PlaceOrder = () => {
     const { id } = useParams();
@@ -33,7 +33,12 @@ const PlaceOrder = () => {
         axios.post('http://localhost:5000/placeOrder', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Order Placed Successfully');
+                    swal({
+                        title: "WOW!",
+                        text: "Order Placed Successfully!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
                     reset();
                 }
             })

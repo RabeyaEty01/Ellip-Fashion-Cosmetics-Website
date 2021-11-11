@@ -101,7 +101,7 @@ const Dashboard = () => {
                                             </li>
 
                                             <li class="nav-item">
-                                                <Link as={HashLink} to={`${url}/makeAdmin`} class="nav-link  mt-3 d-flex ">
+                                                <Link as={HashLink} to={`${url}/makeAdmin`}class="nav-link  mt-3 d-flex ">
                                                     <span className="icon">
                                                     <i class="fas fa-user-plus"></i>
                                                     </span>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import swal from 'sweetalert';
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -11,22 +12,37 @@ const ManageOrders = () => {
 
     //DELETE Booked Order
     const handleDeleteBookedOrder = id => {
-        const proceed = window.confirm('Are you sure , you want to delete?');
-        if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Deleted successfully');
 
-                        const remainingOrders = orders.filter(order => order._id !== id);
+        swal({
+            title: "Are you sure?",
+            text: "You Want To Delete This Order!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `http://localhost:5000/orders/${id}`;
+                    fetch(url, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+
+                                swal("Upps! Order Has Been Deleted Successfully!", {
+                                    icon: "success",
+                                });
+                            }
+                            const remainingOrders = orders.filter(order => order._id !== id);
                         setOrders(remainingOrders);
-                    }
-                })
-        }
+                        })
+
+                }
+                else {
+                    swal("Order Not Deleted!");
+                }
+            });
     }
 
     //UPDATE STATUS
@@ -42,8 +58,13 @@ const ManageOrders = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Shipped Successfully.')
-
+                    swal({
+                        title: "WOW!",
+                        text: "Status Updated To Shipped Successfully!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                   
                 }
             })
     }

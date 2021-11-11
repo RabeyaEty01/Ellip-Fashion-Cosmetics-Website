@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import swal from 'sweetalert';
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
@@ -11,22 +12,37 @@ const ManageProducts = () => {
 
     //DELETE Booked product
     const handleDeleteProducts = id => {
-        const proceed = window.confirm('Are you sure , you want to delete?');
-        if (proceed) {
-            const url = `http://localhost:5000/products/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Deleted successfully');
+        swal({
+            title: "Are you sure?",
+            text: "You Want To Delete This Product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `http://localhost:5000/products/${id}`;
+                    fetch(url, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
 
-                        const remainingProducts = products.filter(product => product._id !== id);
-                        setProducts(remainingProducts);
-                    }
-                })
-        }
+                                swal("Upps! Product Has Been Deleted Successfully!", {
+                                    icon: "success",
+                                });
+                            }
+                            const remainingProducts = products.filter(product => product._id !== id);
+                            setProducts(remainingProducts);
+                        })
+
+                }
+                else {
+                    swal("Product Not Deleted!");
+                }
+            });
+
     }
     return (
         <div className="my-5">
@@ -67,7 +83,7 @@ const ManageProducts = () => {
                                     <td>{product.price}</td>
                                     <td>{product.stock}</td>
                                     <td>
-                                        <button className="btn btn-success">Update</button>
+                                        <button className="btn btn-success">Edit</button>
                                     </td>
                                     <td>
                                         <button onClick={() => handleDeleteProducts(product._id)} className="btn btn-danger">Delete</button>

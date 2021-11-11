@@ -4,15 +4,16 @@ import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import loginImg from '../../images/loginimg.png';
 import logo from '../../images/logo.png';
+import swal from 'sweetalert';
 
 const Registration = () => {
 
     const [loginData, setLoginData] = useState({});
 
     const history = useHistory();
-   
 
-    const { user, authError, registerUser, isLoading} = useAuth();
+
+    const { user, authError, registerUser, isLoading } = useAuth();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -22,11 +23,16 @@ const Registration = () => {
         setLoginData(newLoginData);
     }
 
- 
+
 
     const handleLoginSubmit = e => {
         if (loginData.password !== loginData.password2) {
-            alert('Your Password did not match');
+            swal({
+                title: "OOPS!",
+                text: "Password Did Not Match!",
+                icon: "warning",
+                button: "Ok!",
+            });
             return
         }
         registerUser(loginData.email, loginData.password, loginData.name, history);
@@ -106,7 +112,7 @@ const Registration = () => {
                             </div>
                             <p>Already Have An Account? <Link className="login-text fw-bold" to="/login">Go to Login</Link></p>
 
-                         
+
 
                         </form>
                     </div>

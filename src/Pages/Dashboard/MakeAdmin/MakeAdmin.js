@@ -43,7 +43,8 @@ const MakeAdmin = () => {
             <h2 className="animate__animated animate__bounceInLeft text-start"><small className="fw-bold login-text ">Make</small> <small> New</small> <small className="fw-bold login-text ">Admin</small>
             </h2>
 
-          
+           
+
             <form onSubmit={handleAdminSubmit}>
                 <div className="d-flex mt-5">
                     <div class="col-sm-7 review-input">

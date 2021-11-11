@@ -10,9 +10,11 @@ import logo from '../../../images/logo.png';
 import './Dashboard.css';
 import MyOrders from '../MyOrders/MyOrders';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import ManageOrders from '../ManageOrders/ManageOrders';
 
 const Dashboard = () => {
-    const { logOut } = useAuth();
+    const { logOut, admin } = useAuth();
 
     let { path, url } = useRouteMatch();  //for nesting route
 
@@ -31,7 +33,7 @@ const Dashboard = () => {
                                 <ul class="navbar-nav flex-column w-100 justify-content-center">
                                     <li class="nav-item ">
                                         <Link as={HashLink} to="#" class="nav-link active nav-item-hover mt-3  fw-bold d-flex">
-                                        <img  src={logo} alt="" />
+                                            <img src={logo} alt="" />
                                         </Link>
                                     </li>
                                     <li class="nav-item ">
@@ -51,68 +53,83 @@ const Dashboard = () => {
                                             <span className="title"><h5 className="ms-3">Home</h5></span>
                                         </Link>
                                     </li>
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to={`${url}/pay`} class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i className="fa fa-shopping-cart"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">Pay</h5></span>
-                                        </Link>
-                                    </li>
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to={`${url}/myOrders`} class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i className="fa fa-shopping-cart"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">My Orders</h5></span>
-                                        </Link>
-                                    </li>
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to={`${url}/addReview`} class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i className="fa fa-shopping-cart"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">Review</h5></span>
-                                        </Link>
-                                    </li>
+
+                                    {/* for normal users  */}
+                                    {!admin &&
+                                        <>
+
+                                            < li class="nav-item">
+                                                <Link as={HashLink} to={`${url}/pay`} class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                        <i class="fab fa-cc-amazon-pay"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">Pay</h5></span>
+                                                </Link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <Link as={HashLink} to={`${url}/myOrders`} class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                        <i class="fas fa-shopping-bag"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">My Orders</h5></span>
+                                                </Link>
+                                            </li>
+                                            <li class="nav-item">
+                                                <Link as={HashLink} to={`${url}/addReview`} class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                    <i class="fas fa-grin-stars"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">Review</h5></span>
+                                                </Link>
+                                            </li>
+                                        </>
+                                    }
 
                                     {/* for admin  */}
 
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i class="fas fa-tasks"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">Manage All Orders</h5></span>
-                                        </Link>
-                                    </li>
+                                    {
+                                        admin &&
+                                        <>
+                                          <li class="nav-item">
+                                                <Link as={HashLink} to={`${url}/addProduct`} class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                        <i class="fas fa-plus-square"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">Add A Product</h5></span>
+                                                </Link>
+                                            </li>
 
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to={`${url}/addProduct`} class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i class="fas fa-plus-square"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">Add A Product</h5></span>
-                                        </Link>
-                                    </li>
+                                            <li class="nav-item">
+                                                <Link as={HashLink} to={`${url}/makeAdmin`} class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                    <i class="fas fa-user-plus"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">Make Admin</h5></span>
+                                                </Link>
+                                            </li>
 
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to={`${url}/makeAdmin`} class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i class="fas fa-user-shield"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">Make Admin</h5></span>
-                                        </Link>
-                                    </li>
+                                            <li class="nav-item">
+                                                <Link as={HashLink} to={`${url}/manageOrders`} class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                        <i class="fas fa-tasks"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">Manage All Orders</h5></span>
+                                                </Link>
+                                            </li>
 
-                                    <li class="nav-item">
-                                        <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
-                                            <span className="icon">
-                                                <i class="fas fa-tasks"></i>
-                                            </span>
-                                            <span className="title"><h5 className="ms-3">Manage Products</h5></span>
-                                        </Link>
-                                    </li>
+                                        
+                                            <li class="nav-item">
+                                                <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
+                                                    <span className="icon">
+                                                        <i class="fas fa-tasks"></i>
+                                                    </span>
+                                                    <span className="title"><h5 className="ms-3">Manage Products</h5></span>
+                                                </Link>
+                                            </li>
+                                        </>
+                                    }
+
+
 
                                     <li class="nav-item">
                                         <Link as={HashLink} to="" class="nav-link  mt-3 d-flex ">
@@ -135,25 +152,28 @@ const Dashboard = () => {
                                 <Route exact path={path}>
                                     <DashboardHome></DashboardHome>
                                 </Route>
-                                <Route path={`${path}/addProduct`}>
-                                    <AddProduct></AddProduct>
-                                </Route>
                                 <Route path={`${path}/pay`}>
-                                    
                                     <Pay></Pay>
                                 </Route>
                                 <Route path={`${path}/addReview`}>
                                     <AddReview></AddReview>
                                 </Route>
-                                <Route path={`${path}/makeAdmin`}>
-                                    <MakeAdmin></MakeAdmin>
-                                </Route>
                                 <Route path={`${path}/myOrders`}>
                                     <MyOrders></MyOrders>
                                 </Route>
-                                {/* <AdminRoute path={`${path}/addDoctor`}>
-                                    <AddDoctor></AddDoctor>
-                                </AdminRoute> */}
+                                <Route path={`${path}/manageOrders`}>
+                                    <ManageOrders></ManageOrders>
+                                </Route>
+
+                                {/*for admin  */}
+                                <AdminRoute path={`${path}/makeAdmin`}>
+                                    <MakeAdmin></MakeAdmin>
+                                </AdminRoute>
+                                <AdminRoute path={`${path}/addProduct`}>
+                                    <AddProduct></AddProduct>
+                                </AdminRoute>
+
+
                             </Switch>
 
 

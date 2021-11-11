@@ -41,7 +41,7 @@ const MyOrders = () => {
                 <h2 className="animate__animated animate__bounceInLeft text-center"><small className="fw-bold login-text ">Your</small> <small> Total</small> <small className="fw-bold login-text ">Orders : </small>
                     <small>{myOrders.length}</small> </h2>
 
-                {  myOrders.length === 0 ?
+                {myOrders.length === 0 ?
                     <Spinner animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>
@@ -75,7 +75,15 @@ const MyOrders = () => {
                                                             <h4 className="card-text text-success">Status: {order.status}</h4>
                                                         </div>
 
-                                                        <button onClick={() => handleDeleteBookedOrder(order._id)} className="btn btn-danger mt-5">Cancel Order</button>
+                                                        {
+                                                            order.status === 'Shipped' ?
+                                                                <div class="alert alert-success mt-5" role="alert">
+                                                                    Product Has Been Shipped Successfully!
+                                                                </div>
+
+                                                                :
+                                                                <button onClick={() => handleDeleteBookedOrder(order._id)} className="btn btn-danger mt-5">Cancel Order</button>
+                                                        }
                                                     </div>
 
                                                 </div>
@@ -91,7 +99,7 @@ const MyOrders = () => {
                         </div>
 
                     </div>
-                    }
+                }
             </div>
 
         </div>

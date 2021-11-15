@@ -1,5 +1,5 @@
 # Ellip Fashion Cosmetics Website
- You can see the live demo here()
+ You can see the live demo here(https://ellip-fashion-cosmetics.web.app/)
 
  ## In this project-
  * You can register yourself and login using email password or google 
